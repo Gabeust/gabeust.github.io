@@ -6,11 +6,72 @@ html{
     width: 100%;
 }
 
-body{
-   background-color: #dfe9f3;
-    height: 400vh;
- 	
+
+.bot{
+  width:30px;
+  height: 30px;
+  line-height: 30px;
+  display: block;
+  background: none;
+  color: #fff;
 }
+.switch{
+  background: #343d5b;
+  border-radius: 1000px;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  outline: none;
+}
+.switch ::after{
+  content: "";
+  display: block;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  background: #f1f1f1;
+  top: 0;
+  left: 0;
+  right: unset;
+  border-radius: 100px;
+  transition: .3s ease all;
+  box-shadow: 0px 0px 2px 2px rgba(0, 0, 0, .2);  
+
+}
+.switch.active {
+  background: orange;
+  color: #000;
+  }
+.switch.active ::after{
+  right: 0;
+  left: unset;
+}
+body{
+    font-family: "Open Sans", sans-serif;
+    font-family: sans-serif;
+    background-color: #dfe9f3;
+    height: 400vh;
+    min-height: 100vh;
+  
+}
+body.dark{
+  background: #242323; 
+  transition: .3s ease all; 
+}
+body.dark h2,
+body.dark h3,
+body.dark h4,
+body.dark p,
+body.dark li,
+body.dark span{
+  color: #dad8d8;
+}
+body.dark aside{
+  background-color: #2e2c2c;
+}
+
+
 ::-webkit-scrollbar{
     width: 20px;
 }
@@ -18,7 +79,7 @@ body{
     background-color: #dddddd;
 }
 ::-webkit-scrollbar-thumb{
-    background-color: #1da1f2;
+    background-color: #1d2327;
 }
 :root {
     --blanco: #ffffff;
@@ -31,6 +92,12 @@ body{
 header{
     padding: 0 2rem 0 2rem;
   }
+  
+h1 {
+    color: #fff;
+    text-align: center;
+    text-transform: uppercase;
+   }
 
 h2  {
     color: black;
@@ -43,26 +110,39 @@ h2  {
 
 img{
     border-radius: 50%;
+    filter: drop-shadow(0 0 10px grey);
     width: 200px;
     height: 200px;
-    overflow: hidden;
     background: url("http://iv1.lisimg.com/image/3558715/427full-gabriel-romero.jpg") no-repeat;
 }
 aside{
+    background-color: #b8dbf3;
     width: 40%;
     float: right;
-    background-color: #757575;
     text-align: center;
     padding-top: 2rem;
 }
+@media screen and (max-width:720px){
+  aside{
+    width:100%;
+  
+  }
+
+}
 main{
     width: 60%;
-    float: left;
-    background-color: #dddddd;
+    display: inline-block; 
     padding-bottom: 5.4rem;
- 
+  
 }
-section{
+@media screen and (max-width:720px) {
+  main{   
+    width: 100%;
+    
+  }
+  
+}
+.formu{
     width: 100%;
     float: left;
 }
@@ -72,6 +152,9 @@ section{
 }
 .show{
     display: block;
+}
+#desplegar{
+  display: none;
 }
 .leerMas_btn {
     background-color: var(--secundario);
@@ -96,16 +179,16 @@ section{
 }
 
 .contenido-hero{
-    position: absolute;
-    background-color: rgb( 0 0 0 / 70%);
+    
+    background-color: rgba(50, 48, 48, 0.7);
     width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
 }
-.contenido-hero h2,
 .contenido-hero p {
     color: var(--blanco);
 }
@@ -114,21 +197,11 @@ section{
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,800);
 
-body {
-  font-family: "Open Sans", sans-serif;
-  
-  font-family: sans-serif;
-  min-height: 150vh;
-}
+
 section {
   padding: 2em 10px;
 }
-h1 {
-  color: #fff;
-  text-align: center;
-  text-transform: uppercase;
-  margin-bottom: 2em;
-}
+
 div.form {
   width: 100%;
   max-width: 450px;
@@ -206,16 +279,24 @@ footer{
     height: 45px;
     width: 100%;
     display:flex;
-    padding-left: 15rem;
     padding-top: 1rem;
-    text-align: center;
+    justify-content: center;
+  
     
 }
+@media screen and (max-width:768px) {
+  footer {
+ 
+    padding-left: 0%;
+    text-align: center;
+    width: 100%;
+   
+  }
 
+  
+}
 
 .foo {
-    max-width: 10rem;
-    display: flex;
     align-items: center;
     pointer-events: none;
   }
@@ -246,7 +327,7 @@ footer{
     list-style: none;
   }
   .nav-item {
-    margin-inline: 2.5rem;
+    margin-inline: 2rem;
     opacity: 0;
     transition: transform 0.5s, opacity 0.5s;
   }
